@@ -49,7 +49,7 @@ class TicketMachineTest {
 	void decreaseBalanceWhenPrintTicket(){
 		machine.insertMoney(PRICE);
 		machine.printTicket();
-		assertEquals(machine.getBalance(), 50-PRICE, "La balance doit être mise à jour lors de l'impression d'un ticket");
+		assertEquals(machine.getBalance(), 0, "La balance doit être mise à jour lors de l'impression d'un ticket");
 	}
 
 	@Test
