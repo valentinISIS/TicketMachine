@@ -82,5 +82,9 @@ class TicketMachineTest {
 		assertThrows(IllegalArgumentException.class, () -> {machine.insertMoney(-10);},  "La machine ne doit pas recevoir des montants négatifs");
 	}
 
-
+	@Test
+	// S10 : on ne peut pas créer de machine qui délivre des tickets dont le prix est négatif
+	void cantCreateTicketMachineWithNegativePrice(){
+		assertThrows(IllegalArgumentException.class, () -> {new TicketMachine(-1);}, "");
+	}
 }
