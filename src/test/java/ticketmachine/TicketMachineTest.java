@@ -36,4 +36,10 @@ class TicketMachineTest {
 		assertFalse(machine.printTicket(), "Le ticket ne doit pas pouvoir être imprimer");
 	}
 
+	@Test
+	// S4: on imprime le ticket si le montant inséré est suffisant
+	void printIfMoneyIsSufficient(){
+		machine.insertMoney(50);
+		assertTrue(machine.printTicket(), "Le ticket doit s'imprimer");
+	}
 }
