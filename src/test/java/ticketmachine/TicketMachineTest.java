@@ -33,20 +33,21 @@ class TicketMachineTest {
 	@Test
 	// S3: on n’imprime pas leticket si le montant inséré est insuffisant
 	void notPrintIfMoneyIsInsufficient(){
+		machine.insertMoney(PRICE-1);
 		assertFalse(machine.printTicket(), "Le ticket ne doit pas pouvoir être imprimer");
 	}
 
 	@Test
 	// S4: on imprime le ticket si le montant inséré est suffisant
 	void printIfMoneyIsSufficient(){
-		machine.insertMoney(50);
+		machine.insertMoney(PRICE);
 		assertTrue(machine.printTicket(), "Le ticket doit s'imprimer");
 	}
 
 	@Test
 	// S5: Quand on imprime un ticket la balance est décrémentée du prix du ticket
 	void decreaseBalanceWhenPrintTicket(){
-		machine.insertMoney(50);
+		machine.insertMoney(PRICE);
 		machine.printTicket();
 		assertEquals(machine.getBalance(), 50-PRICE, "La balance doit être mise à jour lors de l'impression d'un ticket");
 	}
@@ -54,7 +55,7 @@ class TicketMachineTest {
 	@Test
 	// S6: le montant collecté est mis à jour quand on imprime un ticket (pas avant)
 	void collectMoneyWhenTicketIsPrint(){
-		machine.insertMoney(50);
+		machine.insertMoney(PRICE);
 		assertEquals(machine.getTotal(), 0, "Le total doit être mise à jour lors de l'impression d'un ticket");
 		machine.printTicket();
 		assertEquals(machine.getTotal(), PRICE, "Le total doit être mise à jour lors de l'impression d'un ticket");
@@ -76,8 +77,10 @@ class TicketMachineTest {
 	}
 
 	@Test
-	// S9 : on ne peut pas insérerun montant négatif
+	// S9 : on ne peut pas insérer un montant négatif
 	void cantInsertNegativeMoney(){
 		assertThrows(IllegalArgumentException.class, () -> {machine.insertMoney(-10);},  "La machine ne doit pas recevoir des montants négatifs");
 	}
+
+
 }
