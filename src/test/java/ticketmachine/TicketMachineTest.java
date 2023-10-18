@@ -30,4 +30,10 @@ class TicketMachineTest {
 		assertEquals(10 + 20, machine.getBalance(), "La balance n'est pas correctement mise à jour");              
 	}
 
+	@Test
+	// S3: on n’imprime pas leticket si le montant inséré est insuffisant
+	void notPrintIfMoneyIsInsufficient(){
+		assertFalse(machine.printTicket(), "Le ticket ne doit pas pouvoir être imprimer");
+	}
+
 }
