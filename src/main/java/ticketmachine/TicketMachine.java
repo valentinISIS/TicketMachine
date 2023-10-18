@@ -63,6 +63,10 @@ public class TicketMachine {
 	 * @throws IllegalArgumentException if amount is not positive
 	 */
 	public void insertMoney(int amount) {
+		// Test de validité du paramètre
+		if (amount <= 0) {
+			throw new IllegalArgumentException("amount must be positive");
+		}
 		balance = balance + amount;
 	}
 
