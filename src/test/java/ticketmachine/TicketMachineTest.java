@@ -50,4 +50,13 @@ class TicketMachineTest {
 		machine.printTicket();
 		assertEquals(machine.getBalance(), 50-PRICE, "La balance doit être mise à jour lors de l'impression d'un ticket");
 	}
+
+	@Test
+	// S6: le montant collecté est mis à jour quand on imprime un ticket (pas avant)
+	void collectMoneyWhenTicketIsPrint(){
+		machine.insertMoney(50);
+		assertEquals(machine.getBalance(), 50, "La balance doit être mise à jour lors de l'impression d'un ticket");
+		machine.printTicket();
+		assertEquals(machine.getBalance(), 50-PRICE, "La balance doit être mise à jour lors de l'impression d'un ticket");
+	}
 }
