@@ -86,6 +86,7 @@ public class TicketMachine {
 	public boolean printTicket() {
 		if (balance >= price){
 			balance = balance-price;
+			total = total+price;
 			// Simulate the printing of a ticket.
 			System.out.println("##################");
 			System.out.println("# The BlueJ Line");
