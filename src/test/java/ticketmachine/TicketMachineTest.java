@@ -59,4 +59,11 @@ class TicketMachineTest {
 		machine.printTicket();
 		assertEquals(machine.getBalance(), 50-PRICE, "La balance doit être mise à jour lors de l'impression d'un ticket");
 	}
+
+	@Test
+	// S7 : refund()rendcorrectement la monnaie
+	void refundMoney(){
+		machine.insertMoney(20);
+		assertEquals(machine.refund(), 20, "La machine ne rend pas correctement la monnaie");
+	}
 }
