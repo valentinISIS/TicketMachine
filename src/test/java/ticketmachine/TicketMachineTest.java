@@ -42,4 +42,12 @@ class TicketMachineTest {
 		machine.insertMoney(50);
 		assertTrue(machine.printTicket(), "Le ticket doit s'imprimer");
 	}
+
+	@Test
+	// S5: Quand on imprime un ticket la balance est décrémentée du prix du ticket
+	void decreaseBalanceWhenPrintTicket(){
+		machine.insertMoney(50);
+		machine.printTicket();
+		assertEquals(machine.getBalance(), 50-PRICE, "La balance doit être mise à jour lors de l'impression d'un ticket");
+	}
 }
