@@ -74,4 +74,10 @@ class TicketMachineTest {
 		machine.refund();
 		assertEquals(machine.getBalance(), 0, "La machine ne réinitialise pas la balance correctement");
 	}
+
+	@Test
+	// S9 : on ne peut pas insérerun montant négatif
+	void cantInsertNegativeMoney(){
+		assertThrows(IllegalArgumentException.class, () -> {machine.insertMoney(-10);},  "La machine ne doit pas recevoir des montants négatifs");
+	}
 }
