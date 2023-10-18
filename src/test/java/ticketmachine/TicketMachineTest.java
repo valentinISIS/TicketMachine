@@ -66,4 +66,12 @@ class TicketMachineTest {
 		machine.insertMoney(20);
 		assertEquals(machine.refund(), 20, "La machine ne rend pas correctement la monnaie");
 	}
+
+	@Test
+	// S8 : refund()remet la balance à zéro
+	void refundMoneySetBalanceToZero(){
+		machine.insertMoney(20);
+		machine.refund();
+		assertEquals(machine.getBalance(), 0, "La machine ne réinitialise pas la balance correctement");
+	}
 }
